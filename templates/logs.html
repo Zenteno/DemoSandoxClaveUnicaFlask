@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Logs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<style type="text/css">
+    .container-fluid{
+        padding: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <h2>Logs</h2>
+  <table class="table table-striped">
+     <thead class="thead-dark">
+      <tr>
+        <th>Apellidos</th>
+        <th>Nombre</th>
+        <th>RUN</th>
+        <th>Inicio de Sesión</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in logs %}
+      {% set rut = [log['RolUnico']['numero'], log['RolUnico']['DV']]|join('-') %}
+      <tr>
+        <td>{{ " ".join(log["name"]["apellidos"]) }}</td>
+        <td>{{ " ".join(log["name"]["nombres"]) }}</td>
+        <td>{{ rut }}</td>
+        <td>{{ log["date"] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
